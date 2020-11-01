@@ -2,6 +2,15 @@
 
 An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost](http://ghost.org) interface, with inspiration from [svbtle](http://svbtle.com) and [prose.io](http://prose.io).
 
+## 修改内容：
+> 2020-11-01 14:21 +UCT 8
+
+增加windows支持（Linux支持未知），修改文件如下：
+
+- `/api.js`
+
+- `/www/index.html`
+
 ## Hexo Version
 
 For 2.x, use version `0.3.0` of this plugin. Version `1.x` and beyond only

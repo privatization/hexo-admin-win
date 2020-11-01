@@ -358,11 +358,11 @@ module.exports = function (app, hexo) {
     }
 
     var msg = 'upload successful'
-    var filename = imagePrefix + i +'.png'
     var i = 0
-    while (fs.existsSync(path.join(hexo.source_dir, imagePath, filename))) {
-      i += 1
+    while (fs.existsSync(path.join(hexo.source_dir, imagePath, imagePrefix + i +'.png'))) {
+      i +=1
     }
+    var filename = path.join(imagePrefix + i +'.png')
     if (req.body.filename) {
       var givenFilename = req.body.filename
       // check for png ending, add it if not there
@@ -385,7 +385,8 @@ module.exports = function (app, hexo) {
       }
     }
 
-    filename = path.join(imagePath, filename)
+    // filename = path.join(imagePath, filename)
+    filename = imagePath + "/" + filename
     var outpath = path.join(hexo.source_dir, filename)
 
     var dataURI = req.body.data.slice('data:image/png;base64,'.length)
@@ -395,10 +396,10 @@ module.exports = function (app, hexo) {
       if (err) {
         console.log(err)
       }
-      var imageSrc = path.join(hexo.config.root + filename).replace(/\\/g, '/')
       hexo.source.process().then(function () {
         res.done({
-          src: imageSrc,
+          // src: path.join(hexo.config.root + filename),
+          src: filename,
           msg: msg
         })
       });
